@@ -16,6 +16,7 @@
 
         <!-- Styles -->
         @livewireStyles
+        @stack('styles')
     </head>
     <body class="font-sans antialiased">
         <div class="max-w-screen-xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
@@ -25,7 +26,7 @@
             <x-atoms.svg.home />
         </x-atoms.nav-link>
 
-        <x-atoms.nav-link href="{{ route('photos.index') }}" :active="request()->routeIs(['photos.index','photos.create'])">
+        <x-atoms.nav-link href="{{ route('photos.index') }}" :active="request()->routeIs(['photos.index','photos.create','photos.edit'])">
             <x-atoms.svg.camera />
         </x-atoms.nav-link>
           </span>
@@ -34,6 +35,7 @@
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
+
 
 
 
@@ -46,5 +48,6 @@
         @stack('modals')
 
         @livewireScripts
+        @stack('scripts')
     </body>
 </html>

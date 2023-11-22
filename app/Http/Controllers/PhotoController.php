@@ -23,43 +23,14 @@ class PhotoController extends Controller
         return view('photos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Photo $photo)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Photo $photo)
     {
-        //
+        return view('photos.edit',compact('photo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Photo $photo)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Photo $photo)
-    {
-        //
-    }
 }

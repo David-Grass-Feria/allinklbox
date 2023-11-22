@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PrivateFilesController;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +29,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('/dashboard/photos',PhotoController::class);
+    Route::get('dashboard/private/files/{model}/{collection}/{modelId}/{filename}',[PrivateFilesController::class,'getPrivateFiles'])->name('getPrivateFile');
+    Route::resource('/dashboard/photos',PhotoController::class)->only(['index','create','edit']);
+
+
 });
