@@ -13,6 +13,7 @@ class ShowImagesFromStorageBox extends Component
     public $collection;
     public $modelId;
     public $disk;
+    public $enableFileDelete = false;
 
 
 
@@ -20,7 +21,7 @@ class ShowImagesFromStorageBox extends Component
     {
 
 
-        $this->files = Storage::disk('storagebox')->files('photo' . '/' . 'photos' . '/' . $this->record->id);
+        $this->files = Storage::disk($this->disk)->files('photo' . '/' . 'photos' . '/' . $this->record->id);
 
 
 

@@ -3,26 +3,29 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 
 class ImageSlideShow extends Component
 {
 
     public $activeImage = 0;
     public $files = [];
+    public $record;
     public $model;
     public $collection;
     public $modelId;
     public $modal;
+    public $disk;
 
-    public function mount($model, $collection, $modelId, $files)
+    public function mount()
     {
 
-        $this->model = $model;
-        $this->collection = $collection;
-        $this->modelId = $modelId;
-        $this->files = $files;
+
+        $this->files = Storage::disk($this->disk)->files('photo' . '/' . 'photos' . '/' . $this->record->id);
 
     }
+
+
 
     public function nextImage()
     {
