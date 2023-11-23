@@ -29,8 +29,11 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
+        //check if the user is the owner of the record or file
+        (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($photo);
         return view('photos.edit',compact('photo'));
     }
+
 
 
 }

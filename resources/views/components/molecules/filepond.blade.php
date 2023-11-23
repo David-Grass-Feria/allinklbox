@@ -12,12 +12,34 @@
 wire:ignore
 x-data="{
     initFilepond () {
-        const pond = FilePond.create(this.$refs.filepond, {
-            server: {
-                process: (fieldname,file,metadata,load,error,progress,abort,transfer,options) => {
-                    @this.upload('{{$name}}',file,load,error,progress)
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+
+        const pond = FilePond.create(document.getElementById('{{$name}}'), {
+
+            allowFileSizeValidation: true,
+            maxFileSize: '{{$maxFileSize}}',
+            maxTotalFileSize: '{{$maxTotalFileSize}}',
+            allowFileTypeValidation: true,
+            acceptedFileTypes: [{{$acceptedFileTypes}}],
+            allowFileTypeValidation: true,
+
+                server: {
+                    process: (fieldname,file,metadata,load,error,progress,abort,transfer,options) => {
+                        @this.upload('{{$name}}',file,load,error,progress)
+                    }
+
+
                 }
-            }
+
+
+
+
+
+
+
+
+
         })
     }
 }"
@@ -26,5 +48,5 @@ x-init="initFilepond"
 x-cloak
 >
 
-<input x-ref="filepond" type="file" {{$attributes}} />
+<input type="file" {{$attributes}} />
 </div>

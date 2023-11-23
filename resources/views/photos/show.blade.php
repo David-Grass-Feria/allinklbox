@@ -9,7 +9,7 @@
         </x-slot>
 
 
-<livewire:photo.create />
+<livewire:photo.show :record="$photo" lazy />
 
 
 

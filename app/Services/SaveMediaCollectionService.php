@@ -1,27 +1,42 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\Storage;
+
 class SaveMediaCollectionService
 {
 
-    public $items = [];
-    public $model;
-    public $modelId;
-    public $collection;
-    public function __construct(array $items, $model, string $collection, $modelId)
+
+
+
+    public function saveMedia(array $items, $model, string $collection, int $modelId, string $disk)
     {
-        $this->items = $items;
-        $this->collection = $collection;
-        $this->model = $model;
-        $this->modelId = $modelId;
+        foreach($items as $item){
+            $item->store($model.'/'.$collection.'/'.$modelId, $disk);
+            Storage::delete('livewire-tmp'.'/'.$item->getFileName());
+        }
     }
 
-    public function saveMedia()
+    public function deleteMultipleMediaWithDirectory($model, string $collection, int $modelId, string $disk)
     {
-        foreach($this->items as $item){
+        $files          = Storage::disk($disk)->files($model . '/' . $collection . '/' . $modelId);
 
-            $item->store($this->model.'/'.$this->collection.'/'.$this->modelId, 'storagebox');
 
+        if ($files) {
+            foreach ($files as $item) {
+                Storage::disk($disk)->delete($item);
+            }
+
+            Storage::disk($disk)->deleteDirectory($model . '/' . $collection . '/' . $modelId);
         }
+    }
+
+    public function deleteSingleMedia($filePath,$disk)
+    {
+        if($filePath){
+            $file          = Storage::disk($disk)->delete($filePath);
+        }
+
+
     }
 }

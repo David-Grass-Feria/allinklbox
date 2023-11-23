@@ -9,7 +9,7 @@
         </x-slot>
 
 
-<livewire:photo-edit-form :record="$photo" />
+<livewire:photo.edit :record="$photo" />
 
 
 

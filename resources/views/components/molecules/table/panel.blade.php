@@ -1,5 +1,5 @@
 @if(isset($tableHeader))
-<div>
+<div class="flex items-center space-x-2 space-y-2 flex-wrap">
 {{$tableHeader}}
 </div>
 @endif

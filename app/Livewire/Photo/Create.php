@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Photo;
 
-use App\Models\User;
+
 use App\Models\Photo;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 
-class PhotoCreateForm extends Component
+class Create extends Component
 {
     use WithFileUploads;
 
     public $photos = [];
+
 
     #[Validate('required|min:1')]
     public $title;
@@ -27,13 +27,12 @@ class PhotoCreateForm extends Component
 
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
         $record = Photo::create($validated);
-        (new \App\Services\SaveMediaCollectionService($this->photos, 'photo', 'photos',$record->id))->saveMedia();
-
-
+        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->photos, 'photo', 'photos',$record->id, 'storagebox');
         return redirect()->route('photos.index')->with('success', __('Photo created'));
     }
     public function render()
     {
-        return view('livewire.photo-create-form');
+
+        return view('livewire.photo.create');
     }
 }

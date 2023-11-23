@@ -8,8 +8,14 @@
         <x-atoms.error for="title" />
 
 
-        <x-atoms.label for="photo" id="photo">{{ __('Photos') }}</x-atoms.label>
-        <x-molecules.filepond wire:model="photos" name="photos" multiple id="photos" />
+        <x-atoms.label for="photos">{{ __('Photos') }}</x-atoms.label>
+        <x-molecules.filepond wire:model="photos" name="photos" multiple id="photos" maxFileSize="10MB" maxTotalFileSize="100MB">
+            <x-slot name="acceptedFileTypes">'image/jpg','image/png','image/jpeg','image/JPEG','image/JPG','image/PNG','image/svg','image/SVG','image/webp'</x-slot>
+        </x-molecules.filepond>
+
+
+
+
 
         <x-atoms.form-footer>
 

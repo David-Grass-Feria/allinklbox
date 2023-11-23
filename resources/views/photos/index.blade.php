@@ -7,7 +7,7 @@
             <x-atoms.buttons.primary type="button">{{__('Create')}}</x-atoms.buttons.primary>
             </a>
         </x-slot>
-                <livewire:photo-datatable />
+                <livewire:photo.index model="\App\Models\Photo"/>
 
             </x-molecules.card>
 </x-app-layout>
