@@ -30,4 +30,16 @@ class PrivateFilesController extends Controller
         }, 200, ['Content-Type' => $fileExtension]);
 
     }
+    public function displayFile($model, $collection, $modelId, $filename)
+    {
+        $ucFirstModel = ucfirst($model);
+        $modelPath = "\\App\\Models\\$ucFirstModel";
+        $record = $modelPath::find($modelId);
+        //check if the user is the owner of the record or file
+        (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($record);
+        $imageUrl = route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => $filename]);
+
+        return view('view-file', compact('imageUrl','record'));
+
+    }
 }

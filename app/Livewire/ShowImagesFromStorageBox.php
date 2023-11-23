@@ -14,6 +14,8 @@ class ShowImagesFromStorageBox extends Component
     public $modelId;
     public $disk;
 
+
+
     public function mount()
     {
 
@@ -23,6 +25,8 @@ class ShowImagesFromStorageBox extends Component
 
 
     }
+
+
 
     public function placeholder()
     {
