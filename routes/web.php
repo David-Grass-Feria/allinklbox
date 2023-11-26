@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PrivateFilesController;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -29,9 +30,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('dashboard/private/files/{model}/{collection}/{modelId}/{filename}/{disk}',[PrivateFilesController::class,'streamFile'])->name('streamFile');
-    Route::get('/file-view/{model}/{collection}/{modelId}/{filename}/{disk}', [PrivateFilesController::class,'displayFile'])->name('displayFile');
+    Route::get('dashboard/private/files-view/{model}/{collection}/{modelId}/{filename}/{disk}/stream',[PrivateFilesController::class,'streamFile'])->name('streamFile');
+    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/{disk}/display', [PrivateFilesController::class,'displayFile'])->name('displayFile');
+    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/{disk}/download', [PrivateFilesController::class,'downloadFile'])->name('downloadFile');
     Route::resource('/dashboard/photos',PhotoController::class)->only(['index','create','edit']);
+    Route::resource('/dashboard/videos',VideoController::class)->only(['index','create','edit']);
 
 
 });

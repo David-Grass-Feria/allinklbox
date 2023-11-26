@@ -10,11 +10,16 @@
     </a>
 
     @if($enableFileDelete)
-    <button wire:click="deleteMultipleSingleFile('{{ $item }}')" wire:confirm="{{__('Are you sure?')}}" type="button" class="absolute top-0 bg-white p-0.5 text-gray-900 shadow-sm">
-       x
+    <button wire:click="deleteMultipleSingleFile('{{ $item }}')" wire:confirm="{{__('Are you sure?')}}" type="button" class="absolute bottom-0 left-5 bg-white p-0.5 text-gray-900 shadow-sm">
+        <x-atoms.svg.trash />
       </button>
       @endif
 
+      <a href="{{route('downloadFile',['model' => $model,'collection' => $collection,'modelId' => $modelId,'filename' => basename($item),'disk' => $disk])}}">
+      <button type="button" class="absolute bottom-0 bg-white p-0.5 text-gray-900 shadow-sm">
+       <x-atoms.svg.download />
+       </button>
+    </a>
 
 
     </div>

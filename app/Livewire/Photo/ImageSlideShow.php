@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Photo;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
@@ -51,6 +51,6 @@ class ImageSlideShow extends Component
 
     public function render()
     {
-        return view('livewire.image-slide-show');
+        return view('livewire.photo.image-slide-show');
     }
 }

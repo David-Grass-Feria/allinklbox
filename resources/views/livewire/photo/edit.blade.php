@@ -12,8 +12,8 @@
         <x-molecules.filepond wire:model="photos" name="photos" multiple id="photos" maxFileSize="10MB" maxTotalFileSize="100MB">
             <x-slot name="acceptedFileTypes">'image/jpg','image/png','image/jpeg','image/JPEG','image/JPG','image/PNG','image/svg','image/SVG','image/webp'</x-slot>
         </x-molecules.filepond>
-        <livewire:image-slide-show lazy :record="$record" model="photo" collection="photos" modelId="{{$record->id}}" disk="storagebox" />
-        <livewire:show-images-from-storage-box lazy enableFileDelete :record="$record" model="photo" collection="photos" modelId="{{$record->id}}" disk="storagebox" />
+        <livewire:photo.image-slide-show lazy :record="$record" model="photo" collection="photos" modelId="{{$record->id}}" disk="storagebox" />
+        <livewire:photo.show-images-from-storage-box lazy enableFileDelete :record="$record" model="photo" collection="photos" modelId="{{$record->id}}" disk="storagebox" />
 
 
 

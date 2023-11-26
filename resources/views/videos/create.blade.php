@@ -3,13 +3,13 @@
 
     <x-molecules.card>
         <x-slot name="header">
-            <a href="{{route('photos.index')}}">
+            <a href="{{route('videos.index')}}">
             <x-atoms.buttons.secondary type="button">{{__('Back')}}</x-atoms.buttons.secondary>
             </a>
         </x-slot>
 
 
-<livewire:photo.show :record="$photo" lazy />
+<livewire:video.create />
 
 
 

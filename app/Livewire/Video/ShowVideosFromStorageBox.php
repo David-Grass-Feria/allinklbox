@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Video;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 
-class ShowImagesFromStorageBox extends Component
+class ShowVideosFromStorageBox extends Component
 {
     public $files = [];
     public $record;
@@ -21,11 +21,13 @@ class ShowImagesFromStorageBox extends Component
     {
 
 
-        $this->files = Storage::disk($this->disk)->files('photo' . '/' . 'photos' . '/' . $this->record->id);
+        $this->files = Storage::disk($this->disk)->files('video' . '/' . 'videos' . '/' . $this->record->id);
 
 
 
     }
+
+
 
 
 
@@ -42,6 +44,6 @@ class ShowImagesFromStorageBox extends Component
     }
     public function render()
     {
-        return view('livewire.show-images-from-storage-box');
+        return view('livewire.video.show-videos-from-storage-box');
     }
 }
