@@ -5,7 +5,7 @@
 <div class="mt-5">
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full mx-auto">
-        <video id="my_video_1" class="video-js my-video" data-setup='{}' preload="none" width="640" height="264" controls>
+        <video class="video-js my-video" data-setup='{}' preload="none" width="640" height="264" controls>
             <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}" type="video/mp4">
             Your browser does not support HTML video.
             <p class="vjs-no-js">
