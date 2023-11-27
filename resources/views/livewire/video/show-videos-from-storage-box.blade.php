@@ -6,7 +6,7 @@
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full">
         <video controls loop>
-            <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}" type="video/mp4">
+            <source src="data:video/mp4;base64, {{ base64_encode(Storage::disk($disk)->get($item))}}" type="video/mp4">
             Your browser does not support HTML video.
             </video>
 
