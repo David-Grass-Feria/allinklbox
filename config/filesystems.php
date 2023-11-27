@@ -64,7 +64,7 @@ return [
             'url' => 'https://'.env('STORAGEBOX_SERVER').'/'.env('APP_NAME', 'Laravel'),
 
             'ssl' => false,
-            'root' => env('APP_NAME', 'Laravel'),
+            'root' => env('STORAGEBOX_ROOT', 'Allinklbox'),
 
             'timeout' => 30,
 

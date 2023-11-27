@@ -26,6 +26,8 @@ class PrivateFilesController extends Controller
             fpassthru($stream);
         }, 200, ['Content-Type' => $fileExtension]);
 
+
+
     }
     public function displayFile($model, string $collection, int $modelId, string $filename, string $disk)
     {

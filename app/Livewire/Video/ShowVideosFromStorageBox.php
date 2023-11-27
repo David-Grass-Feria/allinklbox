@@ -23,8 +23,6 @@ class ShowVideosFromStorageBox extends Component
 
         $this->files = Storage::disk($this->disk)->files('video' . '/' . 'videos' . '/' . $this->record->id);
 
-
-
     }
 
 
