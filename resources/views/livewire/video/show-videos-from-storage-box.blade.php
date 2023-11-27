@@ -1,6 +1,6 @@
 <div>
 
-    <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+
 
 <div class="mt-5">
     @foreach($files as $item)
@@ -28,7 +28,7 @@
 
 
 
-<script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+
 
 
 </div>
