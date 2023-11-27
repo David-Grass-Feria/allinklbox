@@ -1,7 +1,8 @@
 <div>
 
 @push('styles')
-<link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
 @endpush
 
     <form wire:submit="save">
@@ -35,7 +36,10 @@
 
 
 @push('scripts')
-<script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script>
+const player = new Plyr(document.getElementById('player'));
+</script>
 @endpush
 
 </div>
