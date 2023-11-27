@@ -6,7 +6,7 @@
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="relative">
     <a href="{{route('displayFile',['model' => $model,'collection' => $collection,'modelId' => $modelId,'filename' => basename($item),'disk' => $disk])}}">
-    <img id="img-{{$item}}" class="h-32 rounded-md" src="data:image/png;base64, {{ base64_encode(Storage::disk($disk)->get($item))}}"  />
+    <img id="img-{{$item}}" class="h-32 rounded-md" src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}"  />
     </a>
 
     @if($enableFileDelete)
