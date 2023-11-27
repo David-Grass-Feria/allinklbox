@@ -5,8 +5,8 @@
 <div class="mt-5">
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full">
-        <video preload="none" controls>
-            <source src="{{ route('displayFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}" type="video/mp4">
+        <video src="{{ route('displayFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}" preload="none" controls>
+
             Your browser does not support HTML video.
             </video>
 
