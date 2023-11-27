@@ -9,8 +9,8 @@
 
 
             <video
-            id="my-video"
-            class="video-js"
+
+            class="my-video video-js"
             controls
             preload="auto"
             width="640"
