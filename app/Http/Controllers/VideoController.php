@@ -12,8 +12,8 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return phpInfo();
-        //return view('videos.index');
+
+        return view('videos.index');
     }
 
     /**
