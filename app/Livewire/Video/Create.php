@@ -27,7 +27,7 @@ class Create extends Component
 
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
         $record = Video::create($validated);
-        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->videos, 'video', 'videos',$record->id, 'storagebox');
+        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->videos, 'video', 'videos',$record->id);
         return redirect()->route('videos.index')->with('success', __('Video created'));
     }
     public function render()

@@ -9,32 +9,32 @@ class SaveMediaCollectionService
 
 
 
-    public function saveMedia(array $items, $model, string $collection, int $modelId, string $disk)
+    public function saveMedia(array $items, $model, string $collection, int $modelId)
     {
         foreach($items as $item){
-            $item->store($model.'/'.$collection.'/'.$modelId, $disk);
+            $item->store($model.'/'.$collection.'/'.$modelId);
             Storage::delete('livewire-tmp'.'/'.$item->getFileName());
         }
     }
 
-    public function deleteMultipleMediaWithDirectory($model, string $collection, int $modelId, string $disk)
+    public function deleteMultipleMediaWithDirectory($model, string $collection, int $modelId)
     {
-        $files          = Storage::disk($disk)->files($model . '/' . $collection . '/' . $modelId);
+        $files          = Storage::files($model . '/' . $collection . '/' . $modelId);
 
 
         if ($files) {
             foreach ($files as $item) {
-                Storage::disk($disk)->delete($item);
+                Storage::delete($item);
             }
 
-            Storage::disk($disk)->deleteDirectory($model . '/' . $collection . '/' . $modelId);
+            Storage::deleteDirectory($model . '/' . $collection . '/' . $modelId);
         }
     }
 
-    public function deleteSingleMedia($filePath,$disk)
+    public function deleteSingleMedia($filePath)
     {
         if($filePath){
-            $file          = Storage::disk($disk)->delete($filePath);
+            $file          = Storage::delete($filePath);
         }
 
 

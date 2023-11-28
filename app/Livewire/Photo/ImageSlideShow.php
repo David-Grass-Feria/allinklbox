@@ -15,13 +15,13 @@ class ImageSlideShow extends Component
     public $collection;
     public $modelId;
     public $modal;
-    public $disk;
+
 
     public function mount()
     {
 
 
-        $this->files = Storage::disk($this->disk)->files('photo' . '/' . 'photos' . '/' . $this->record->id);
+        $this->files = Storage::files('photo' . '/' . 'photos' . '/' . $this->record->id);
 
     }
 

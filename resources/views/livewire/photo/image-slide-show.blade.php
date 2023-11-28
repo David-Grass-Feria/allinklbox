@@ -24,7 +24,7 @@
 
                     @foreach($files as $index => $item)
                         <div wire:key="imgModal-{{$item}}" class="relative" style="{{ $activeImage == $index ? '' : 'display:none;' }}">
-                            <img id="imgModal-{{$item}}" class="rounded-md" src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item),'disk' => $disk]) }}" />
+                            <img id="imgModal-{{$item}}" class="rounded-md" src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" />
                         </div>
                     @endforeach
                 </div>

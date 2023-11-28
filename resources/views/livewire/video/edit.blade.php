@@ -17,7 +17,7 @@
         </x-molecules.filepond>
 
 
-        <livewire:video.show-videos-from-storage-box enableFileDelete :record="$record" model="video" collection="videos" modelId="{{$record->id}}" disk="storagebox" />
+        <livewire:video.show-videos-from-storage-box enableFileDelete :record="$record" model="video" collection="videos" modelId="{{$record->id}}" />
 
 
 

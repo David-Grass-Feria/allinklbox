@@ -30,9 +30,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('dashboard/private/files-view/{model}/{collection}/{modelId}/{filename}/{disk}/stream',[PrivateFilesController::class,'streamFile'])->name('streamFile');
-    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/{disk}/display', [PrivateFilesController::class,'displayFile'])->name('displayFile');
-    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/{disk}/download', [PrivateFilesController::class,'downloadFile'])->name('downloadFile');
+    Route::get('dashboard/private/files-view/{model}/{collection}/{modelId}/{filename}/stream',[PrivateFilesController::class,'streamFile'])->name('streamFile');
+    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/display', [PrivateFilesController::class,'displayFile'])->name('displayFile');
+    Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/download', [PrivateFilesController::class,'downloadFile'])->name('downloadFile');
     Route::resource('/dashboard/photos',PhotoController::class)->only(['index','create','edit']);
     Route::resource('/dashboard/videos',VideoController::class)->only(['index','create','edit']);
 

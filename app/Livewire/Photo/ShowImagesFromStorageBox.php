@@ -12,7 +12,6 @@ class ShowImagesFromStorageBox extends Component
     public $model;
     public $collection;
     public $modelId;
-    public $disk;
     public $enableFileDelete = false;
 
 
@@ -21,7 +20,7 @@ class ShowImagesFromStorageBox extends Component
     {
 
 
-        $this->files = Storage::disk($this->disk)->files('photo' . '/' . 'photos' . '/' . $this->record->id);
+        $this->files = Storage::files('photo' . '/' . 'photos' . '/' . $this->record->id);
 
 
 
@@ -38,7 +37,7 @@ class ShowImagesFromStorageBox extends Component
 
     public function deleteMultipleSingleFile(string $item)
     {
-        (new \App\Services\SaveMediaCollectionService())->deleteSingleMedia($item, 'storagebox');
+        (new \App\Services\SaveMediaCollectionService())->deleteSingleMedia($item);
         return redirect(request()->header('Referer'));
 
     }

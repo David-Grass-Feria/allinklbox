@@ -10,7 +10,7 @@ class PrivateFilesController extends Controller
 
 
 
-    public function streamFile($model, string $collection, int $modelId, string $filename, string $disk)
+    public function streamFile($model, string $collection, int $modelId, string $filename)
     {
 
 
@@ -19,8 +19,8 @@ class PrivateFilesController extends Controller
         $record = $modelPath::find($modelId);
         (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($record);
 
-        $stream = Storage::disk($disk)->readStream($model . '/' . $collection . '/' . $modelId . '/' . $filename);
-        $fileExtension = Storage::disk($disk)->mimeType($model . '/' . $collection . '/' . $modelId . '/' . $filename);
+        $stream = Storage::readStream($model . '/' . $collection . '/' . $modelId . '/' . $filename);
+        $fileExtension = Storage::mimeType($model . '/' . $collection . '/' . $modelId . '/' . $filename);
 
         return Response::stream(function () use ($stream) {
             fpassthru($stream);
@@ -31,7 +31,7 @@ class PrivateFilesController extends Controller
 
 
     }
-    public function displayFile($model, string $collection, int $modelId, string $filename, string $disk)
+    public function displayFile($model, string $collection, int $modelId, string $filename)
     {
 
         $ucFirstModel = ucfirst($model);
@@ -39,13 +39,13 @@ class PrivateFilesController extends Controller
         $record = $modelPath::find($modelId);
         (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($record);
 
-        $imageUrl = route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => $filename, 'disk' => $disk]);
+        $imageUrl = route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => $filename]);
 
         return view('view-file', compact('imageUrl', 'record'));
 
     }
 
-    public function downloadFile($model, string $collection, int $modelId, string $filename, string $disk)
+    public function downloadFile($model, string $collection, int $modelId, string $filename)
     {
 
 
@@ -56,7 +56,7 @@ class PrivateFilesController extends Controller
         $record = $modelPath::find($modelId);
         (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($record);
 
-        $file = Storage::disk($disk)->get($model . '/' . $collection . '/' . $modelId . '/' . $filename);
+        $file = Storage::get($model . '/' . $collection . '/' . $modelId . '/' . $filename);
 
 
 
