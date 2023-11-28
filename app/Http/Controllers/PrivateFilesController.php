@@ -28,6 +28,8 @@ class PrivateFilesController extends Controller
 
 
 
+
+
     }
     public function displayFile($model, string $collection, int $modelId, string $filename, string $disk)
     {
