@@ -22,6 +22,8 @@ class PrivateFilesController extends Controller
         $stream = Storage::readStream($model . '/' . $collection . '/' . $modelId . '/' . $filename);
         $fileExtension = Storage::mimeType($model . '/' . $collection . '/' . $modelId . '/' . $filename);
 
+
+
         return Response::stream(function () use ($stream) {
             fpassthru($stream);
         }, 200, ['Content-Type' => $fileExtension]);

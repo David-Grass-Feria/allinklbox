@@ -1,7 +1,7 @@
 <div>
 
 @push('styles')
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<link rel="stylesheet" href="{{asset('vendor/plyr/plyr.css')}}" />
 
 @endpush
 
@@ -36,7 +36,7 @@
 
 
 @push('scripts')
-<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script src="{{asset('vendor/plyr/plyr.js')}}"></script>
 <script>
 const player = new Plyr(document.getElementById('player'));
 </script>
