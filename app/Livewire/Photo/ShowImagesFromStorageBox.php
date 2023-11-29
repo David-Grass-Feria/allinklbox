@@ -37,7 +37,7 @@ class ShowImagesFromStorageBox extends Component
 
     public function deleteMultipleSingleFile(string $item)
     {
-        (new \App\Services\SaveMediaCollectionService())->deleteSingleMedia($item);
+        (new \App\Services\DeleteSingleMediaCollectionService($item));
         return redirect(request()->header('Referer'));
 
     }

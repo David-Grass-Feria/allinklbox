@@ -3,10 +3,12 @@
 namespace App\Livewire\Photo;
 
 
+use App\Jobs\SaveMediaOnDisk;
 use App\Models\Photo;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Storage;
 
 class Create extends Component
 {
@@ -26,8 +28,10 @@ class Create extends Component
         $validated = $this->validate();
 
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
+
         $record = Photo::create($validated);
-        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->photos, 'photo', 'photos',$record->id);
+        (new \App\Services\SaveMediaCollectionService($this->photos,'photo','photos',$record->id));
+
         return redirect()->route('photos.index')->with('success', __('Photo created'));
     }
     public function render()

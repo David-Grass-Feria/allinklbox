@@ -49,7 +49,7 @@ class Edit extends Component
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
         $record = Video::find($this->record->id);
         $record->update($validated);
-        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->videos, 'videos', 'videos', $record->id);
+        (new \App\Services\SaveMediaCollectionService($this->videos,'video','videos',$record->id));
 
         return redirect()->route('videos.index')->with('success', __('Video edited'));
     }

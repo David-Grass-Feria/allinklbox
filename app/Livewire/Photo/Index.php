@@ -33,4 +33,9 @@ class Index extends Component
                 ->paginate($this->perPage)
         ]);
     }
+
+    public function deleteFilesOnDisk($recordId)
+    {
+        \App\Jobs\DeleteMediaOnDisk::dispatch('photo','photos',$recordId);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Jobs\DeleteMediaOnDisk;
 use Livewire\WithPagination;
 
 trait LivewireIndexTrait
@@ -20,8 +21,7 @@ trait LivewireIndexTrait
 
         foreach ($this->selected as $recordId) {
             $findRecord = $this->model::find($recordId);
-            (new \App\Services\SaveMediaCollectionService())->deleteMultipleMediaWithDirectory('photo','photos',$recordId,'storagebox');
-            (new \App\Services\SaveMediaCollectionService())->deleteMultipleMediaWithDirectory('photo','images',$recordId,'storagebox');
+            $this->deleteFilesOnDisk($recordId);
             $findRecord->delete();
 
         }
