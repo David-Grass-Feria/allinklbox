@@ -27,7 +27,7 @@ class Create extends Component
 
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
         $record = Photo::create($validated);
-        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->photos, 'photo', 'photos',$record->id, 'storagebox');
+        (new \App\Services\SaveMediaCollectionService())->saveMedia($this->photos, 'photo', 'photos',$record->id);
         return redirect()->route('photos.index')->with('success', __('Photo created'));
     }
     public function render()

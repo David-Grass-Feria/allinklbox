@@ -62,7 +62,6 @@ return [
             'username' => env('STORAGEBOX_USERNAME', ''),
             'password' => env('STORAGEBOX_PASSWORD'),
             'url' => 'https://'.env('STORAGEBOX_SERVER').'/'.env('APP_NAME', 'Laravel'),
-
             'ssl' => false,
             'root' => env('STORAGEBOX_ROOT', 'Allinklbox'),
 
