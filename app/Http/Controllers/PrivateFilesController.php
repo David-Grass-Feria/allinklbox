@@ -36,7 +36,7 @@ class PrivateFilesController extends Controller
             ]
         );
 
-        return $url;
+
 
 
 
