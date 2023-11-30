@@ -14,6 +14,7 @@ class ShowVideosFromStorageBox extends Component
     public $modelId;
     public $disk;
     public $enableFileDelete = false;
+    public $id;
 
 
 //test

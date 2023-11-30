@@ -1,9 +1,9 @@
 <div>
 
-@push('styles')
+
 <link rel="stylesheet" href="{{asset('vendor/plyr/plyr.css')}}" />
 
-@endpush
+
 
     <form wire:submit="save">
         <x-atoms.label for="title" id="title">{{ __('Title') }}</x-atoms.label>
@@ -17,7 +17,7 @@
         </x-molecules.filepond>
 
 
-        <livewire:video.show-videos-from-storage-box enableFileDelete :record="$record" model="video" collection="videos" modelId="{{$record->id}}" />
+        <livewire:video.show-videos-from-storage-box enableFileDelete :record="$record" id="video" model="video" collection="videos" modelId="{{$record->id}}" />
 
 
 
@@ -37,9 +37,7 @@
 
 @push('scripts')
 <script src="{{asset('vendor/plyr/plyr.js')}}"></script>
-<script>
-const player = new Plyr(document.getElementById('player'));
-</script>
 @endpush
+
 
 </div>
