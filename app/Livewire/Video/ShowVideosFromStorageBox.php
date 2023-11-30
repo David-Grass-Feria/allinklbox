@@ -18,7 +18,13 @@ class ShowVideosFromStorageBox extends Component
 
 
 //test
+    public function mount()
+    {
 
+
+        //$this->files = Storage::files('video' . '/' . 'videos' . '/' . $this->record->id);
+
+    }
 
 
 
@@ -32,7 +38,6 @@ class ShowVideosFromStorageBox extends Component
 
     public function render()
     {
-        $files = Storage::files('video' . '/' . 'videos' . '/' . $this->record->id);
-        return view('livewire.video.show-videos-from-storage-box',['files' => $files]);
+        return view('livewire.video.show-videos-from-storage-box');
     }
 }
