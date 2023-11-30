@@ -7,7 +7,7 @@
     <div wire:key="{{$item}}" class="w-full mx-auto">
 
             <video id="{{$id}}" preload="none" playsinline controls>
-                <source src="{{Storage::url($model . '/' . $collection . '/' . $modelId . '/' . basename($item))}}" type="video/mp4" />
+                <source src="{{Storage::path($model . '/' . $collection . '/' . $modelId . '/' . basename($item))}}" type="video/mp4" />
 
 
               </video>
