@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\QueueController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PrivateFilesController;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -35,6 +36,7 @@ Route::middleware([
     Route::get('/dashboard/private/file-view/{model}/{collection}/{modelId}/{filename}/download', [PrivateFilesController::class,'downloadFile'])->name('downloadFile');
     Route::resource('/dashboard/photos',PhotoController::class)->only(['index','create','edit']);
     Route::resource('/dashboard/videos',VideoController::class)->only(['index','create','edit']);
+    Route::get('/commands/queue-work',[QueueController::class,'queueWork'])->name('queue.work');
 
 
 });
