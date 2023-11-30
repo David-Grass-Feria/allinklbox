@@ -8,7 +8,7 @@
 
             <video id="{{$id}}" preload="none" playsinline controls>
                 <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="video/mp4" />
-
+                    <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="video/webm" />
 
               </video>
         </div>
