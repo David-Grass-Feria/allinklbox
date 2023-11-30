@@ -6,6 +6,7 @@ use App\Models\Video;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -58,6 +59,7 @@ class Edit extends Component
 
     public function render()
     {
+
 
         return view('livewire.video.edit');
     }

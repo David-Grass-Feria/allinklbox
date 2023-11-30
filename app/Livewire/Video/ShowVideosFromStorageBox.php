@@ -22,7 +22,7 @@ class ShowVideosFromStorageBox extends Component
     {
 
 
-        $this->files = Storage::disk($this->disk)->files('video' . '/' . 'videos' . '/' . $this->record->id);
+        $this->files = Storage::files('video' . '/' . 'videos' . '/' . $this->record->id);
 
     }
 
@@ -35,12 +35,7 @@ class ShowVideosFromStorageBox extends Component
         return view('livewire.placeholder', ['placeholder' => __('Wait for storagebox')]);
     }
 
-    public function deleteMultipleSingleFile(string $item)
-    {
-        (new \App\Services\SaveMediaCollectionService())->deleteSingleMedia($item, 'storagebox');
-        return redirect(request()->header('Referer'));
 
-    }
     public function render()
     {
         return view('livewire.video.show-videos-from-storage-box');
