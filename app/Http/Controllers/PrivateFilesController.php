@@ -24,9 +24,19 @@ class PrivateFilesController extends Controller
 
 
 
-        return Response::stream(function () use ($stream) {
-            fpassthru($stream);
-        }, 200, ['Content-Type' => $fileExtension]);
+        //return Response::stream(function () use ($stream) {
+        //    fpassthru($stream);
+        //}, 200, ['Content-Type' => $fileExtension]);
+        $url = Storage::temporaryUrl(
+            $model . '/' . $collection . '/' . $modelId . '/' . $filename,
+            now()->addMinutes(5),
+            [
+                'ResponseContentType' => $fileExtension,
+
+            ]
+        );
+
+        return $url;
 
 
 
