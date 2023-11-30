@@ -35,9 +35,9 @@
     </form>
 
 
-@push('scripts')
+
 <script src="{{asset('vendor/plyr/plyr.js')}}"></script>
-@endpush
+
 
 
 </div>
