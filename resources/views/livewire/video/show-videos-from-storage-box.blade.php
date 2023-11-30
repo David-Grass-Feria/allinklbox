@@ -3,7 +3,7 @@
 
 
 <div class="mt-5">
-
+    @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full mx-auto">
 
             <video id="{{$id}}" preload="none" playsinline controls>
@@ -12,7 +12,7 @@
 
               </video>
         </div>
-
+    @endforeach
 
 </div>
 
