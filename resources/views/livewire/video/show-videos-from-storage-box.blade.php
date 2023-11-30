@@ -7,7 +7,7 @@
     <div wire:key="{{$item}}" class="w-full mx-auto">
 
             <video id="{{$id}}" preload="none" playsinline controls>
-                <source src="data:image/video;base64, {{ base64_encode(Storage::get($model . '/' . $collection . '/' . $modelId . '/' . basename($item)))}}" type="video/mp4" />
+                <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="video/mp4" />
 
 
               </video>
