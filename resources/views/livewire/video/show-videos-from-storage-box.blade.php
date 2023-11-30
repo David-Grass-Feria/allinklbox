@@ -16,11 +16,11 @@
 
 </div>
 
-@push('scripts')
+
 <script>
     const player = new Plyr(document.getElementById('{{$id}}'));
     </script>
-    @endpush
+
 
 
 
