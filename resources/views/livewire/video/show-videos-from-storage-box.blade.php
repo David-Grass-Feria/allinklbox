@@ -6,7 +6,7 @@
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full mx-auto">
 
-            <video src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" id="{{$id}}" playsinline controls>
+            <video predload="none" src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" id="{{$id}}" playsinline controls>
 
             </video>
         </div>
