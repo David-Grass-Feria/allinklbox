@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Music;
+namespace App\Livewire\MusicList;
 
 use App\Models\Music;
 use Livewire\Component;
@@ -13,11 +13,11 @@ use App\Jobs\SaveMediaOnDisk;
 
 class Edit extends Component
 {
-    use WithFileUploads;
 
 
 
-    public $songs = [];
+
+
 
 
 
@@ -50,9 +50,7 @@ class Edit extends Component
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
         $record = Music::find($this->record->id);
         $record->update($validated);
-        \App\Jobs\DeleteMediaOnDisk::dispatch('music','songs',$record->id);
-        (new \App\Services\SaveMediaCollectionService($this->songs,'music','songs',$record->id));
-        return redirect()->route('musics.index')->with('success', __('Music edited'));
+        return redirect()->route('musiclists.index')->with('success', __('Music list edited'));
     }
 
 
@@ -60,6 +58,6 @@ class Edit extends Component
     public function render()
     {
 
-        return view('livewire.music.edit');
+        return view('livewire.music-list.edit');
     }
 }

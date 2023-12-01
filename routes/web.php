@@ -5,6 +5,7 @@ use App\Http\Controllers\MusicController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\QueueController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\MusicListController;
 use App\Http\Controllers\PrivateFilesController;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -38,6 +39,7 @@ Route::middleware([
     Route::resource('/dashboard/photos',PhotoController::class)->only(['index','create','edit']);
     Route::resource('/dashboard/videos',VideoController::class)->only(['index','create','edit']);
     Route::resource('/dashboard/musics',MusicController::class)->only(['index','create','edit']);
+    Route::resource('/dashboard/musiclists',MusicListController::class)->only(['index','create','edit']);
     Route::get('/commands/queue-work',[QueueController::class,'queueWork'])->name('queue.work');
 
 

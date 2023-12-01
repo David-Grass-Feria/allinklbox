@@ -3,14 +3,13 @@
 
     <x-molecules.card>
         <x-slot name="header">
-            <a href="{{route('musics.index')}}">
+            <a href="{{route('musiclists.index')}}">
             <x-atoms.buttons.secondary type="button">{{__('Back')}}</x-atoms.buttons.secondary>
             </a>
-
         </x-slot>
 
 
-<livewire:music.create />
+<livewire:music-list.create />
 
 
 

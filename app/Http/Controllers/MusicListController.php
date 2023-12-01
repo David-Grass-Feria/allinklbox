@@ -12,7 +12,7 @@ class MusicListController extends Controller
      */
     public function index()
     {
-        //
+        return view('musiclists.index');
     }
 
     /**
@@ -20,46 +20,18 @@ class MusicListController extends Controller
      */
     public function create()
     {
-        //
+        return view('musiclists.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(MusicList $musicList)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(MusicList $musicList)
     {
-        //
+        return view('musiclists.edit',compact('musiclist'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, MusicList $musicList)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(MusicList $musicList)
-    {
-        //
-    }
 }

@@ -6,6 +6,9 @@
             <a href="{{route('musics.create')}}">
             <x-atoms.buttons.primary type="button">{{__('Create')}}</x-atoms.buttons.primary>
             </a>
+            <a href="{{route('musiclists.index')}}">
+                <x-atoms.buttons.primary type="button">{{__('Playlists')}}</x-atoms.buttons.primary>
+                </a>
         </x-slot>
                 <livewire:music.index model="\App\Models\Music"/>
 

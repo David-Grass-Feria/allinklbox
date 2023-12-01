@@ -13,7 +13,7 @@ class MusicList extends Model
 
     protected $fillable = [
         'title',
-        'user_id',
+        'team_id',
         'search',
         'music_id',
         'music_lists_id',
