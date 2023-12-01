@@ -27,7 +27,7 @@ class PrivateFilesController extends Controller
         //return Response::stream(function () use ($stream) {
         //    fpassthru($stream);
         //}, 200, ['Content-Type' => $fileExtension]);
-        $video_path = Storage::path($model . '/' . $collection . '/' . $modelId . '/' . $filename);
+        $video_path = Storage::readStream($model . '/' . $collection . '/' . $modelId . '/' . $filename);
         $stream = new \App\Services\VideoStream($video_path);
         $stream->start();
 
