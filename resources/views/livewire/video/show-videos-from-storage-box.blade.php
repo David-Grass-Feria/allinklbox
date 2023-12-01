@@ -6,9 +6,8 @@
     @foreach($files as $item)
     <div wire:key="{{$item}}" class="w-full mx-auto">
 
-            <video id="{{$id}}" playsinline controls>
-                <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="video/mp4" >
-                    <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="video/webm" >
+            <video src="data:video/mp4;base64, {{ base64_encode(Storage::get($item))}}" id="{{$id}}" playsinline controls>
+
             </video>
         </div>
     @endforeach
