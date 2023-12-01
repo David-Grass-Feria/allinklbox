@@ -7,7 +7,7 @@
     <div wire:key="{{$item}}" class="relative">
 
         <audio id="{{$id}}" loop controls>
-            <source src="data:image/png;base64, {{ base64_encode(Storage::get($item))}}" type="audio/mpeg">
+            <source src="{{ route('streamFile', ['model' => $model, 'collection' => $collection, 'modelId' => $modelId, 'filename' => basename($item)]) }}" type="audio/mpeg">
             Your browser does not support the audio element.
             </audio>
 

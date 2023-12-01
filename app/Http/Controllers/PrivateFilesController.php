@@ -19,16 +19,28 @@ class PrivateFilesController extends Controller
         $record = $modelPath::find($modelId);
         (new \App\Services\CheckIfUserIsOwnerOfRecord)->checkIfUserIsOwnerOfRecordOrFile($record);
 
-        //$stream = Storage::readStream($model . '/' . $collection . '/' . $modelId . '/' . $filename);
-        $fileExtension = Storage::mimeType($model . '/' . $collection . '/' . $modelId . '/' . $filename);
-        $file = base64_encode('data:audio/mpeg;base64,' .Storage::get($model . '/' . $collection . '/' . $modelId . '/' . $filename));
+        $path = $model . '/' . $collection . '/' . $modelId . '/' . $filename;
+        $fileExtension = Storage::mimeType($path);
+        $fileSize = Storage::size($path);
 
+        return Response::stream(function() use ($path) {
+            $stream = Storage::readStream($path);
+            if ($stream) {
+                fpassthru($stream);
+                fclose($stream);
+            }
+        }, 200, [
+            'Content-Type' => $fileExtension,
+            'Content-Length' => $fileSize,
+            'Accept-Ranges' => 'bytes'
+        ]);
 
         //return Response::stream(function () use ($stream) {
         //    fpassthru($stream);
-        //}, 200, ['Content-Type' => $fileExtension]);
+        //}, 200, ['Content-Type' => $fileExtension,'Content-length' => $fileSize]);
 
-        return $file;
+
+
 
 
 
