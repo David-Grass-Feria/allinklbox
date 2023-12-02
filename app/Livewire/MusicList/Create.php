@@ -21,8 +21,11 @@ class Create extends Component
     public $title;
 
 
-    #[Validate('required|min:2')]
+
     public $songs = [];
+
+    #[Validate('required|array|min:2')]
+    public $selected = [];
 
     public function mount()
     {
@@ -38,14 +41,13 @@ class Create extends Component
     {
 
         $validated = $this->validate();
-
         $validated['team_id'] = (new \App\Services\GetCurrentTeamIdService)->get();
 
         $record = MusicList::create($validated);
-        foreach($this->songs as $item){
+        foreach($this->selected as $item){
 
             \App\Models\MusicListItem::create([
-                'music_id'              => $item->id,
+                'music_id'              => json_decode($item)->id,
                 'music_lists_id'        => $record->id,
             ]);
         }

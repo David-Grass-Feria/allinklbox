@@ -25,14 +25,21 @@ class Edit extends Component
     #[Validate('required|min:1')]
     public $title;
     public $record;
+    public $songs = [];
+    #[Validate('required|array|min:2')]
+    public $selected = [];
 
-
+    public $playList = [];
 
 
     public function mount()
     {
 
         $this->title = $this->record->title;
+        $this->songs = Music::query()
+        ->select('id', 'title')
+        ->where('team_id', '=', (new \App\Services\GetCurrentTeamIdService)->get())
+        ->get();
 
 
 

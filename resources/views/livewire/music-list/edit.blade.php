@@ -1,6 +1,8 @@
 <div>
 
-
+    @push('styles')
+    <link href="{{asset('vendor/select2/select2/select2.min.css')}}" rel="stylesheet" />
+    @endpush
 
     <form wire:submit="save">
         <x-atoms.label for="title" id="title">{{ __('Title') }}</x-atoms.label>
@@ -8,13 +10,18 @@
         <x-atoms.error for="title" />
 
 
-        <x-atoms.label for="songs" id="songs">{{ __('Songs') }}</x-atoms.label>
-        <x-atoms.input wire:model="songs" type="text" class="w-full"></x-atoms.input>
-        <x-atoms.error for="songs" />
 
 
 
-
+        <div wire:ignore>
+            <x-atoms.label for="songs">{{ __('Songs') }}</x-atoms.label>
+            <x-atoms.select multiple id="songs">
+                @foreach($songs as $song)
+                <option value="{{$song}}">{{$song->title}}</option>
+                @endforeach
+            </x-atoms.select>
+            <x-atoms.error for="selected" />
+        </div>
 
 
 
@@ -30,7 +37,32 @@
         </x-atoms.form-footer>
     </form>
 
+    @push('scripts')
+    <script src="{{asset('vendor/select2/jquery-3.6.3/jquery-3.6.3.min.js')}}"></script>
+    <script src="{{asset('vendor/select2/select2/select2.min.js')}}"></script>
 
+    <script>
+
+    $(document).ready(function() {
+
+
+    $('#songs').select2({
+            placeholder: "{{__('Choose songs for this playlist')}}",
+             allowClear: true,
+             tags: false
+
+    });
+
+
+
+    });
+    $('#songs').on('change', function (e) {
+                var data = $('#songs').select2("val");
+            @this.set('selected', data);
+            });
+    </script>
+
+    @endpush
 
 
 </div>

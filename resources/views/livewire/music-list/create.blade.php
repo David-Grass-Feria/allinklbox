@@ -12,12 +12,12 @@
 
         <div wire:ignore>
         <x-atoms.label for="songs">{{ __('Songs') }}</x-atoms.label>
-        <x-atoms.select wire:model="songs" multiple id="songs">
+        <x-atoms.select multiple id="songs">
             @foreach($songs as $song)
-            <option wire:key="option-{{$song->id}}" value="{{$song->id}}">{{$song->title}}</option>
+            <option value="{{$song}}">{{$song->title}}</option>
             @endforeach
         </x-atoms.select>
-        <x-atoms.error for="songs" />
+        <x-atoms.error for="selected" />
     </div>
 
 
@@ -49,11 +49,18 @@
             placeholder: "{{__('Choose songs for this playlist')}}",
              allowClear: true,
              tags: false
+
     });
 
 
+
     });
+    $('#songs').on('change', function (e) {
+                var data = $('#songs').select2("val");
+            @this.set('selected', data);
+            });
     </script>
+
     @endpush
 
 

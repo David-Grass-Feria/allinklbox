@@ -30,7 +30,7 @@ class MusicListController extends Controller
      */
     public function edit(MusicList $musicList)
     {
-        return view('musiclists.edit',compact('musiclist'));
+        return view('musiclists.edit',compact('musicList'));
     }
 
 

@@ -9,7 +9,7 @@
         </x-slot>
 
 
-<livewire:music-list.edit :record="$music" />
+<livewire:music-list.edit :record="$musicList" />
 
 
 
