@@ -29,18 +29,21 @@ class Edit extends Component
     #[Validate('required|array|min:2')]
     public $selected = [];
 
-    public $playList = [];
+
+    public $musicListItems = [];
 
 
     public function mount()
     {
 
         $this->title = $this->record->title;
+
         $this->songs = Music::query()
         ->select('id', 'title')
         ->where('team_id', '=', (new \App\Services\GetCurrentTeamIdService)->get())
         ->get();
 
+        $this->musicListItems = \App\Models\MusicListItem::where('music_lists_id',$this->record->id)->get();
 
 
     }

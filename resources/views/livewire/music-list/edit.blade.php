@@ -17,7 +17,15 @@
             <x-atoms.label for="songs">{{ __('Songs') }}</x-atoms.label>
             <x-atoms.select multiple id="songs">
                 @foreach($songs as $song)
+                @foreach($musicListItems as $musicListItem)
+                @if($musicListItem->music_id == $song->id)
+
+                <option selected value="{{$song}}">{{$song->title}}</option>
+                @else
                 <option value="{{$song}}">{{$song->title}}</option>
+                @endif
+                @endforeach
+
                 @endforeach
             </x-atoms.select>
             <x-atoms.error for="selected" />

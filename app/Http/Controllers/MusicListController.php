@@ -28,8 +28,9 @@ class MusicListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MusicList $musicList)
+    public function edit($id)
     {
+        $musicList = MusicList::find($id);
         return view('musiclists.edit',compact('musicList'));
     }
 
