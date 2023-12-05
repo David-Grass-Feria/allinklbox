@@ -31,9 +31,13 @@
             <x-atoms.error for="selected" />
         </div>
 
-
-
-
+        @foreach($songs as $song)
+                @foreach($musicListItems as $musicListItem)
+                @if($musicListItem->music_id == $song->id)
+        <livewire:music.show-songs-from-storage-box lazy :record="$song" model="music" collection="songs" modelId="{{$musicListItem->music_id}}" />
+        @endif
+        @endforeach
+        @endforeach
 
         <x-atoms.form-footer>
 
