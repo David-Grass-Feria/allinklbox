@@ -16,6 +16,7 @@ class MyPassword extends Model
         'user_name',
         'password',
         'notes',
+        'parameters',
         'team_id',
 
     ];

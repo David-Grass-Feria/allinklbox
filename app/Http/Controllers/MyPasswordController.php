@@ -35,5 +35,12 @@ class MyPasswordController extends Controller
         return view('mypasswords.edit',compact('record'));
     }
 
+    public function appLogin()
+    {
+
+        $appUrl = request()->url.request()->parameters;
+        return redirect()->away($appUrl);
+    }
+
 
 }

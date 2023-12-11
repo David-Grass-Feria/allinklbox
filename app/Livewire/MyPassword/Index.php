@@ -20,7 +20,7 @@ class Index extends Component
     {
         return view('livewire.my-password.index', [
             'records' => $this->model::query($this->search)
-                ->select('id', 'title','user_name','url','notes','password')
+                ->select('id', 'title','user_name','url','notes','password','parameters')
                 ->where('team_id', '=', (new \App\Services\GetCurrentTeamIdService)->get())
                 ->where(function ($query) {
                     $query->orWhere('id', 'like', '%' . $this->search . '%')

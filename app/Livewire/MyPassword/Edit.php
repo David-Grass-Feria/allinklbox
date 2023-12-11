@@ -34,6 +34,9 @@ class Edit extends Component
     #[Validate('nullable|min:8')]
     public $password;
     #[Validate('nullable|min:1')]
+
+
+    public $parameters;
     public $notes;
     public $record;
 
@@ -48,7 +51,7 @@ class Edit extends Component
         $this->url = $this->record->url;
         $this->password = $this->record->password;
         $this->notes = $this->record->notes;
-
+        $this->parameters = $this->record->parameters;
 
 
 

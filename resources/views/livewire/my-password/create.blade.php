@@ -27,12 +27,14 @@
         <x-atoms.textarea wire:model="notes" rows="5" class="w-full"></x-atoms.textarea>
         <x-atoms.error for="notes" />
 
-
+        <x-atoms.label for="parameters" id="parameters">{{ __('Parameters') }}</x-atoms.label>
+        <x-atoms.input wire:model="parameters" type="text" class="w-full"></x-atoms.input>
+        <x-atoms.error for="parameters" />
 
 
         <x-atoms.form-footer>
 
-            <a href="{{ route('photos.index') }}">
+            <a href="{{ route('mypasswords.index') }}">
                 <x-atoms.buttons.secondary type="button">{{ __('Cancel') }}</x-atoms.buttons.secondary>
             </a>
             <x-atoms.buttons.primary type="submit">{{ __('Save') }}<span class="ml-5" wire:loading wire:target="save">{{__('Please wait..')}}</span></x-atoms.buttons.primary>

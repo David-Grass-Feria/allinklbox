@@ -45,7 +45,11 @@
                                         </x-atoms.table.td>
                                     <x-atoms.table.td>
                                         @if($record->url)
-                                        <a class="text-red-500" target="_blank" href="{{ $record->url }}"><x-atoms.svg.link /></a>
+
+                                        <form action="{{ route('appLogin', ['url' => $record->url, 'parameters' => $record->parameters]) }}" method="post" target="_blank">
+                                            @csrf
+                                            <x-atoms.buttons.secondary type="submit">Login</x-atoms.buttons.secondary>
+                                          </form>
                                             @endif
                                         </x-atoms.table.td>
                                     <x-atoms.table.td>{{$record->notes}}</x-atoms.table.td>
