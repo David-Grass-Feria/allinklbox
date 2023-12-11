@@ -50,9 +50,9 @@
                                     <x-atoms.table.td>
                                         @if($record->url)
 
-                                        <form id="appLogin" action="{{ route('appLogin', ['url' => $record->url, 'parameters' => $record->parameters]) }}" method="post" target="_blank">
+                                        <form action="{{ route('appLogin', ['url' => $record->url, 'parameters' => $record->parameters]) }}" method="post" target="_blank">
                                             @csrf
-                                            <x-atoms.buttons.secondary onclick="document.getElementById('appLogin').submit();" type="submit">Login</x-atoms.buttons.secondary>
+                                            <x-atoms.buttons.secondary type="submit">Login</x-atoms.buttons.secondary>
                                           </form>
                                             @endif
                                         </x-atoms.table.td>
