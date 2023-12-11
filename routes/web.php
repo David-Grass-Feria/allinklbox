@@ -17,9 +17,7 @@ use App\Http\Controllers\PrivateFilesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'login');
 
 Route::middleware([
     'auth:sanctum',
