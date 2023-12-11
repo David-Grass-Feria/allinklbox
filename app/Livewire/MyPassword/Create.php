@@ -25,13 +25,12 @@ class Create extends Component
     public $username;
     #[Validate('nullable|min:1')]
     public $url;
-
     #[Validate('nullable|min:8')]
     public $password;
     #[Validate('nullable|min:1')]
-    public $notes;
-    #[Validate('nullable')]
     public $parameters;
+    #[Validate('nullable|min:1')]
+    public $notes;
 
 
     public function generatePassword()
