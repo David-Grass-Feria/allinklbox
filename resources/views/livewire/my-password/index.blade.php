@@ -52,7 +52,7 @@
                                           </form>
                                             @endif
                                         </x-atoms.table.td>
-                                    <x-atoms.table.td>{{$record->notes}}</x-atoms.table.td>
+                                    <x-atoms.table.td>{{Str::limit($record->notes,3)}}</x-atoms.table.td>
                                     <x-atoms.table.td><a href="{{route('mypasswords.edit',$record)}}"><x-atoms.buttons.primary type="button">{{__('Edit')}}</x-atoms.buttons.primary></a></x-atoms.table.td>
                                 </x-atoms.table.tr>
                                 @endforeach
