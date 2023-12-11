@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->text('password')->nullable();
             $table->text('notes')->nullable();
-            $table->string('parameters')->nullable();
             $table->timestamps();
         });
     }
