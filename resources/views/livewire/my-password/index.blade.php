@@ -38,10 +38,14 @@
                                     <x-atoms.table.td>{{$record->id}}</x-atoms.table.td>
                                     <x-atoms.table.td>{{$record->title}}</x-atoms.table.td>
                                     <x-atoms.table.td>
+                                        @if($record->user_name)
                                     <x-molecules.copy-to-clipboard value="{{$record->user_name}}">{{Str::limit($record->user_name,3)}}</x-molecules.copy-to-clipboard>
+                                    @endif
                                     </x-atoms.table.td>
                                     <x-atoms.table.td>
+                                        @if($record->password)
                                         <x-molecules.copy-to-clipboard value="{{$record->password}}">******</x-molecules.copy-to-clipboard>
+                                        @endif
                                         </x-atoms.table.td>
                                     <x-atoms.table.td>
                                         @if($record->url)
