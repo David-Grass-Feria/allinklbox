@@ -34,6 +34,7 @@ Route::middleware([
     Route::resource('/dashboard/mypasswords',MyPasswordController::class)->only(['index','create','edit']);
     Route::post('/app-login', [MyPasswordController::class,'appLogin'])->name('appLogin');
     Route::get('/commands/queue-work',[QueueController::class,'queueWork'])->name('queue.work');
+    Route::view('/dashboard/bip39','bip39')->name('bip39');
 
 
 
