@@ -34,7 +34,15 @@
             <x-atoms.svg.bitcoin />
         </x-atoms.nav-link>
 
-
+        <x-atoms.nav-link href="{{ route('photos.index') }}" :active="request()->routeIs(['photos.index','photos.create','photos.edit'])">
+            <x-atoms.svg.camera />
+        </x-atoms.nav-link>
+        <x-atoms.nav-link href="{{ route('videos.index') }}" :active="request()->routeIs(['videos.index','videos.create','videos.edit'])">
+            <x-atoms.svg.video />
+        </x-atoms.nav-link>
+        <x-atoms.nav-link href="{{ route('musics.index') }}" :active="request()->routeIs(['musics.index','musics.create','musics.edit','musiclists.index','musiclists.create','musiclists.edit'])">
+            <x-atoms.svg.music />
+        </x-atoms.nav-link>
 
           </span>
         </div>
