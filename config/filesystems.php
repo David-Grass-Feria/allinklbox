@@ -61,8 +61,8 @@ return [
             'host' => env('STORAGEBOX_SERVER', ''),
             'username' => env('STORAGEBOX_USERNAME', ''),
             'password' => env('STORAGEBOX_PASSWORD'),
-            'ssl' => false,
-            'root' => env('STORAGEBOX_ROOT', 'Backups'),
+            'ssl' => true,
+            //'root' => env('STORAGEBOX_ROOT', 'Backups'),
 
 
         ],
