@@ -58,9 +58,9 @@ return [
 
         'storagebox' => [
             'driver' => 'sftp',
-            'host' => 'u338438.your-storagebox.de',
-            'username' => 'u338438',
-            'password' => 'r2Fk2c6VM2RyzRyU',
+            'host' => env('STORAGEBOX_SERVER'),
+            'username' => env('STORAGEBOX_USERNAME'),
+            'password' => env('STORAGEBOX_PASSWORD'),
             'ssl' => true,
 
 
