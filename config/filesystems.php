@@ -62,7 +62,7 @@ return [
             'username' => env('STORAGEBOX_USERNAME', ''),
             'password' => env('STORAGEBOX_PASSWORD'),
             'ssl' => false,
-            'root' => env('STORAGEBOX_ROOT', 'Allinklbox'),
+            'root' => env('STORAGEBOX_ROOT', 'Backups'),
 
 
         ],
