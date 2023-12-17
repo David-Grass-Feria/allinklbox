@@ -5,13 +5,11 @@
     <style>
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-*,*:before,*:after{outline:0;-webkit-box-sizing:border-box;box-sizing:border-box;}
-input,button{outline:none;}
-a,a:hover,a:visited{color:#ddd;text-decoration:none;}
-.flex{display:-webkit-flex;display:flex;}
-.flex-wrap{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
-.flex-align{-webkit-align-items:center;align-items:center;}
-.w-full{width:100%;}
+
+.flex-simp{display:-webkit-flex;display:flex;}
+.flex-wrap-simp{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
+.flex-align-simp{-webkit-align-items:center;align-items:center;}
+.w-full-simp{width:100%;}
 
 /* HTML5 Audio Player with Playlist, source: https://www.codehim.com/vanilla-javascript/javascript-audio-player-with-playlist/ */
 #simp button,#simp input,#simp img{border:0}
@@ -108,7 +106,7 @@ a,a:hover,a:visited{color:#ddd;text-decoration:none;}
                 @foreach($songs as $song)
                 @foreach($musicListItems as $musicListItem)
                 @if($musicListItem->music_id == $song->id)
-                @foreach($files as $item)
+                @foreach(Storage::files('music' . '/' . 'songs' . '/' . $song->id) as $item)
                 <li><span class="simp-source" data-src="{{ route('streamFile', ['model' => 'music', 'collection' => 'songs', 'modelId' => $musicListItem->music_id, 'filename' => basename($item)]) }}">{{$song->title}}</span></li>
                 @endforeach
                 @endif
@@ -459,7 +457,7 @@ if (document.querySelector('#simp')) {
   var simp_a_url = simp_playlist.querySelectorAll('[data-src]');
   var simp_a_index = 0;
   var simp_isPlaying = false;
-  var simp_isNext = false; //auto play
+  var simp_isNext = true; //auto play
   var simp_isRandom = false; //play random
   var simp_isRanext = false; //check if before random starts, simp_isNext value is true
   var simp_isStream = false; //radio streaming
@@ -472,13 +470,13 @@ if (document.querySelector('#simp')) {
 
   var simp_elem = '';
   simp_elem += '<audio id="audio" preload><source src="" type="audio/mpeg"></audio>';
-  simp_elem += '<div class="simp-display"><div class="simp-album w-full flex-wrap"><div class="simp-cover"><i class="fa fa-music fa-5x"></i></div><div class="simp-info"><div class="simp-title">Title</div><div class="simp-artist">Artist</div></div></div></div>';
-  simp_elem += '<div class="simp-controls flex-wrap flex-align">';
-  simp_elem += '<div class="simp-plauseward flex flex-align"><button type="button" class="simp-prev fa fa-backward" disabled></button><button type="button" class="simp-plause fa fa-play" disabled></button><button type="button" class="simp-next fa fa-forward" disabled></button></div>';
+  simp_elem += '<div class="simp-display"><div class="simp-album w-full-simp flex-wrap-simp"><div class="simp-cover"><i class="fa fa-music fa-5x"></i></div><div class="simp-info"><div class="simp-title">Title</div><div class="simp-artist">Artist</div></div></div></div>';
+  simp_elem += '<div class="simp-controls flex-wrap-simp flex-align-simp">';
+  simp_elem += '<div class="simp-plauseward flex-simp flex-align-simp"><button type="button" class="simp-prev fa fa-backward" disabled></button><button type="button" class="simp-plause fa fa-play" disabled></button><button type="button" class="simp-next fa fa-forward" disabled></button></div>';
   simp_elem += '<div class="simp-tracker simp-load"><input class="simp-progress" type="range" min="0" max="100" value="0" disabled/><div class="simp-buffer"></div></div>';
-  simp_elem += '<div class="simp-time flex flex-align"><span class="start-time">00:00</span><span class="simp-slash"> / </span><span class="end-time">00:00</span></div>';
-  simp_elem += '<div class="simp-volume flex flex-align"><button type="button" class="simp-mute fa fa-volume-up"></button><input class="simp-v-slider" type="range" min="0" max="100" value="100"/></div>';
-  simp_elem += '<div class="simp-others flex flex-align"><button type="button" class="simp-plext fa fa-play-circle" title="Auto Play"></button><button type="button" class="simp-random fa fa-random" title="Random"></button><div class="simp-shide"><button type="button" class="simp-shide-top fa fa-caret-up" title="Show/Hide Album"></button><button type="button" class="simp-shide-bottom fa fa-caret-down" title="Show/Hide Playlist"></button></div></div>';
+  simp_elem += '<div class="simp-time flex-simp flex-align-simp"><span class="start-time">00:00</span><span class="simp-slash"> / </span><span class="end-time">00:00</span></div>';
+  simp_elem += '<div class="simp-volume flex-simp flex-align-simp"><button type="button" class="simp-mute fa fa-volume-up"></button><input class="simp-v-slider" type="range" min="0" max="100" value="100"/></div>';
+  simp_elem += '<div class="simp-others flex-simp flex-align-simp"><button type="button" class="simp-plext fa fa-play-circle" title="Auto Play"></button><button type="button" class="simp-random fa fa-random" title="Random"></button><div class="simp-shide"><button type="button" class="simp-shide-top fa fa-caret-up" title="Show/Hide Album"></button><button type="button" class="simp-shide-bottom fa fa-caret-down" title="Show/Hide Playlist"></button></div></div>';
   simp_elem += '</div>'; //simp-controls
 
   var simp_player = document.createElement('div');
