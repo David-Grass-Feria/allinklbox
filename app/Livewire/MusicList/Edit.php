@@ -4,9 +4,10 @@ namespace App\Livewire\MusicList;
 
 use App\Models\Music;
 use Livewire\Component;
+use App\Jobs\SaveMediaOnDisk;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
-use App\Jobs\SaveMediaOnDisk;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -28,6 +29,7 @@ class Edit extends Component
     public $songs = [];
     #[Validate('required|array|min:2')]
     public $selected = [];
+    public $files = [];
 
 
     public $musicListItems = [];
@@ -44,6 +46,7 @@ class Edit extends Component
         ->get();
 
         $this->musicListItems = \App\Models\MusicListItem::where('music_lists_id',$this->record->id)->get();
+        $this->files = Storage::files('music' . '/' . 'songs' . '/' . $this->record->id);
 
 
     }

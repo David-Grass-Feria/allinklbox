@@ -47,7 +47,7 @@ Route::middleware([
     Route::resource('/dashboard/musics',MusicController::class)->only(['index','create','edit']);
     Route::resource('/dashboard/musiclists',MusicListController::class)->only(['index','create','edit']);
 
-    Route::view('/dashboard/bip39','bip39')->name('bip39');
+    //Route::view('/dashboard/bip39','bip39')->name('bip39');
 
 
 

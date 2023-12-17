@@ -30,9 +30,7 @@
             <x-atoms.svg.key />
         </x-atoms.nav-link>
 
-        <x-atoms.nav-link href="{{ route('bip39') }}" :active="request()->routeIs(['bip39'])">
-            <x-atoms.svg.bitcoin />
-        </x-atoms.nav-link>
+
 
         <x-atoms.nav-link href="{{ route('photos.index') }}" :active="request()->routeIs(['photos.index','photos.create','photos.edit'])">
             <x-atoms.svg.camera />
