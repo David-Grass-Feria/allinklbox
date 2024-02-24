@@ -10,7 +10,7 @@
 
         <x-atoms.label for="videos">{{ __('Videos') }}</x-atoms.label>
         <x-molecules.filepond multiple wire:model="videos" name="videos" id="videos" maxFileSize="4000000MB" maxTotalFileSize="400000MB">
-            <x-slot name="acceptedFileTypes">'video/*'</x-slot>
+            <x-slot name="acceptedFileTypes"></x-slot>
         </x-molecules.filepond>
 
 
