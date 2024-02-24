@@ -11,7 +11,7 @@
                 <button type="button">
                     <div class="flex items-center space-x-1">
                  <x-atoms.svg.download />
-                 {{basename($item)}}
+                 <span class="ml-2">{{basename($item)}}</span>
                     </div>
                  </button>
               </a>
