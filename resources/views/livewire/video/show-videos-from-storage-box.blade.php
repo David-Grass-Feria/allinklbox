@@ -11,7 +11,7 @@
               
                     <div class="flex items-center space-x-1 mt-1">
                         <x-atoms.buttons.primary type="button">Download</x-atoms.buttons.primary>
-                 <span class="ml-2">{{basename($item)}}</span>
+                 <span class="ml-2">{{Str::limit(basename($item),10)}}</span>
                     </div>
              
               </a>
