@@ -9,7 +9,7 @@
 
 
         <x-atoms.label for="videos">{{ __('Videos') }}</x-atoms.label>
-        <x-molecules.filepond wire:model="videos" name="videos" id="videos" maxFileSize="4000MB" maxTotalFileSize="4000MB">
+        <x-molecules.filepond multiple wire:model="videos" name="videos" id="videos" maxFileSize="4000000MB" maxTotalFileSize="400000MB">
             <x-slot name="acceptedFileTypes">'video/x-msvideo','video/mp4','video/mpeg','video/webm'</x-slot>
         </x-molecules.filepond>
 
