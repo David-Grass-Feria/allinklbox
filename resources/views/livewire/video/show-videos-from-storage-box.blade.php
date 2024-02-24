@@ -9,7 +9,10 @@
            
             <a href="{{route('downloadFile',['model' => $model,'collection' => $collection,'modelId' => $modelId,'filename' => basename($item)])}}">
                 <button type="button">
+                    <div class="flex items-center space-x-1">
                  <x-atoms.svg.download />
+                 {{basename($item)}}
+                    </div>
                  </button>
               </a>
         </div>
